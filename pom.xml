@@ -10,13 +10,15 @@
 
     <properties>
         <helidon.version>2.0.2</helidon.version>
+        <jackson.version>2.11.2</jackson.version>
         <java.version>11</java.version>
     </properties>
 
     <dependencies>
+        <!--HELIDON-->
         <dependency>
-            <groupId>io.helidon.webserver</groupId>
-            <artifactId>helidon-webserver</artifactId>
+            <groupId>io.helidon.config</groupId>
+            <artifactId>helidon-config-yaml</artifactId>
             <version>${helidon.version}</version>
         </dependency>
         <dependency>
@@ -24,11 +26,31 @@
             <artifactId>helidon-webserver</artifactId>
             <version>${helidon.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.helidon.webserver</groupId>
+            <artifactId>helidon-webserver-jersey</artifactId>
+            <version>${helidon.version}</version>
+        </dependency>
+
+        <!--JACKSON-->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
+        <!--GOOGLE GUICE-->
         <dependency>
             <groupId>com.google.inject</groupId>
             <artifactId>guice</artifactId>
             <version>4.2.3</version>
         </dependency>
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>

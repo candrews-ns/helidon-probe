@@ -1,25 +1,19 @@
 package web;
 
-import com.google.inject.Inject;
-import io.helidon.webserver.Routing;
-import io.helidon.webserver.WebServer;
+import com.google.inject.Guice;
+import com.google.inject.Injector;
 import lombok.SneakyThrows;
-
-import java.util.concurrent.TimeUnit;
+import web.config.ServerModule;
+import web.server.AmbiguousServer;
 
 public class Main {
 
-//    @Inject
-//    WebServer webServer;
-
     @SneakyThrows
     public static void main(String[] args) {
-        WebServer webServer = WebServer
-                .create(Routing.builder().any((req, res) -> res.send("It works!")))
-                .start()
-                .await(10, TimeUnit.SECONDS);
+        Injector injector = Guice.createInjector(new ServerModule());
+        AmbiguousServer server = injector.getInstance(AmbiguousServer.class);
 
-        System.out.println("Server started at: http://localhost:" + webServer.port());
+        server.start();
     }
 
 }
